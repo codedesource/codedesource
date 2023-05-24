@@ -1,40 +1,17 @@
-# TITRE DU PROJET
+# Procédure de la récupération des données Météo France SWI 1969—2022, mailles et métadonnées
 
-## DESCRIPTION DU PROJET
-Récupérer les informations détaillées du portail bnpe.eaufrance.fr
-Pour le département 66 à partir d'un script à exécuter
+## Télécharger les données
 
-**A partir de 2020 jusque ???**
+1. Se rendre à la [page dédiée][1]:
+   * télécharger l'archive zip avec toutes les mailles depuis la rubrique `Téléchargement` ;
+   * télécharger le fichier `Coordonnées des mailles` depuis la rubrique `Documentation`.
 
-A partir de l'URL `https://bnpe.eaufrance.fr/acces-donnees/codeDepartement/<numéro de département>/annee/<numéro d’année YYYY>/` :
-- récupérer les codes INSEE de la commune
-aria-describedby="table-synthesegeographique_codeInsee"
+## Souder les fichiers
 
-Pour chaque URL généré : `https://bnpe.eaufrance.fr/acces-donnees/codeCommune/<numéro de code commune>/annee/<numéro d'année>`
-- récupérer les données <ANNEE> <DEPARTEMENT> <CODE INSEE> 
-<CODE USAGE : BAR,CAN,IRR,AEP,IND> <TYPE D'EAU : CONT, SOUT> 
+3. Décompresser l'archive téléchargée.
+4. Extraire la ligne d'en-tête de l'un des fichiers CSV et la sauvegarder dans un fichier à part (`swi_mailles_header`).
+5. Souder le contenu de tous les fichiers CSV à l'exception de la première ligne de chacun en l'enregistrant dans un fichier (`swi_mailles_headless`).
+6. Souder ensemble `swi_mailles_header` et `swi_mailles_headless` (`swi_mailles`).
+7. Effectuer la jointure entre le fichier mailles et celui des métadonnées.
 
-## TABLE DES MATIERES
-
-
-## HOW TO INSTALL
-créer un environnement python:
-```bash
-py -m venv .venv
-```
-activer l'environnement :
-```bash
-.venv/Scripts/activate.ps1
-```
-installer les dépendances :
-```bash
-python -m pip install jupyter
-```
-
-## HOW TO EXECUTE
-
-
-## HOW TO USE
-
-
-## CREDITS
+[1]: https://donneespubliques.meteofrance.fr/?fond=produit&id_produit=301&id_rubrique=40
