@@ -128,6 +128,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# Mes dossier données
+Data_brut
+
 # Spyder project settings
 .spyderproject
 .spyproject
